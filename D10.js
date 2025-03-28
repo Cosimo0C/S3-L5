@@ -133,7 +133,11 @@ isThisAnEmail("rbugbogr@irwbbbi.com");
 /* ESERCIZIO 7
   Scrivi una funzione chiamata "whatDayIsIt" che ritorna il giorno della settimana corrente.
 */
-
+function whatDayIsIt() {
+  const data = new Date();
+  console.log(data);
+}
+whatDayIsIt();
 /* ESERCIZIO 8
   Scrivi una funzione chiamata "rollTheDices" che riceve un numero come parametro.
   Deve invocare la precedente funzione dice() il numero di volte specificato nel parametro, e deve tornare un oggetto contenente una proprietà "sum":
@@ -146,15 +150,34 @@ isThisAnEmail("rbugbogr@irwbbbi.com");
       values: [3, 3, 4]
   }
 */
-
+function rollTheDices(n) {
+  const tot = {
+    sum: 0,
+  };
+  for (let i = 0; i < n; i++) {
+    const numeroDice = dice();
+    const somma = tot.map((num) => sum.push(num + dice()));
+  }
+  console.log(tot);
+}
+rollTheDices(10);
 /* ESERCIZIO 9
   Scrivi una funzione chiamata "howManyDays" che riceve una data come parametro e ritorna il numero di giorni trascorsi da tale data.
 */
-
-/* ESERCIZIO 10
+function howManyDays(data) {
+  const dataAttuale = new Date();
+  risultato = DateDiff("d", data, dataAttuale);
+  return risultato;
+}
+howManyDays("1/8/2001");
+/* ESERCIZIO 10 
   Scrivi una funzione chiamata "isTodayMyBirthday" che deve ritornare true se oggi è il tuo compleanno, falso negli altri casi.
 */
-
+function isTodayMyBirthday() {
+  const compleanno = getDate(11) + getMonth(7);
+  const data = new Date();
+  return compleanno === data;
+}
 // Arrays & Oggetti
 
 // NOTA: l'array "movies" usato in alcuni esercizi è definito alla fine di questo file
@@ -167,11 +190,11 @@ isThisAnEmail("rbugbogr@irwbbbi.com");
 /* ESERCIZIO 12
   Scrivi una funzione chiamata "newestMovie" che trova il film più recente nell'array "movies" fornito.
 */
-
+function newestMovie() {}
 /* ESERCIZIO 13
   Scrivi una funzione chiamata countMovies che ritorna il numero di film contenuti nell'array "movies" fornito.
 */
-
+function countMovies() {}
 /* ESERCIZIO 14
   Scrivi una funzione chiamata "onlyTheYears" che crea un array con solamente gli anni di uscita dei film contenuti nell'array "movies" fornito.
 */
