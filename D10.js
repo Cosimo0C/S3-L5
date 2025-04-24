@@ -55,7 +55,7 @@ console.log(me);
   Crea una funzione chiamata "dice": deve generare un numero casuale tra 1 e 6.
 */
 function dice() {
-  const numRandom = Math.floor(Math.random() * 7);
+  const numRandom = Math.ceil(Math.random() * 7);
   console.log(numRandom);
 }
 dice();
@@ -76,19 +76,9 @@ console.log(whoIsBigger(20, 3));
   Es.: splitMe("I love coding") => ritorna ["I", "Love", "Coding"]
 */
 function splitMe(str) {
-  const words = str.split(" ");
-  const risultato = [];
-  for (let i = 0; i < words.lenght; i++) {
-    const word = words[i];
-    const primoChar = word.charAt(0);
-    const lettMaiuscola = primoChar.toUpperCase();
-    const lettRimanenti = word.slice(1);
-    const parolaIntera = lettMaiuscola + lettRimanenti;
-    risultato.push(parolaIntera);
-  }
-  console.log(risultato);
+  return str.split(" ");
 }
-splitMe("ciao guys vbbsb sdbvs ");
+console.log(splitMe("ciao sara"));
 /* ESERCIZIO 4
   Crea una funzione chiamata "deleteOne" che riceve una stringa e un booleano come parametri.
   Se il valore booleano è true la funzione deve ritornare la stringa senza il primo carattere, altrimenti la deve ritornare senza l'ultimo.
@@ -97,7 +87,7 @@ function deleteOne(str, booleano) {
   if (booleano) {
     return str.slice(1);
   } else {
-    return str.splice(0, str.lenght - 1);
+    return str.splice(0, str.length - 1);
   }
 }
 console.log(deleteOne("ciao", true));
@@ -107,37 +97,37 @@ console.log(deleteOne("ciao", true));
   Es.: onlyLetters("I have 4 dogs") => ritorna "I have dogs"
 */
 function onlyLetters(str) {
-  const word = str.split(" ");
-  for (let i = 0; i < str.lenght; i++) {
-    if (typeof word[i] === typeof 7) {
-      word[i].slice(1);
-      console.log(word);
-    } else {
-      console.log(word);
+  let words = str.split("");
+  console.log(words);
+
+  for (let i = words.length - 1; i >= 0; i--) {
+    if (!isNaN(parseInt(words[i]))) {
+      words.splice(i, 1);
     }
   }
+
+  return words.join("");
 }
-onlyLetters("cia7");
+
+console.log(onlyLetters("cia7"));
+
 /* ESERCIZIO 6
   Crea una funzione chiamata "isThisAnEmail" che riceve una stringa come parametro e ritorna true se la stringa è un valido indirizzo email.
 */
 function isThisAnEmail(str) {
-  if (str.indexOf("@") && str.indexOf(".")) {
-    return true;
-  } else {
-    return false;
-  }
-  console.log(str);
+  const emailR = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailR.test(str);
 }
-isThisAnEmail("rbugbogr@irwbbbi.com");
+console.log("è un email??", isThisAnEmail("rbugbogr@irwbbbi.com"));
 /* ESERCIZIO 7
   Scrivi una funzione chiamata "whatDayIsIt" che ritorna il giorno della settimana corrente.
 */
 function whatDayIsIt() {
-  const data = new Date();
-  console.log(data);
+  const giorniSettimana = ["Domenica", "Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato"];
+  const oggi = new Date().getDay();
+  return giorniSettimana[oggi];
 }
-whatDayIsIt();
+console.log("Oggi è ", whatDayIsIt());
 /* ESERCIZIO 8
   Scrivi una funzione chiamata "rollTheDices" che riceve un numero come parametro.
   Deve invocare la precedente funzione dice() il numero di volte specificato nel parametro, e deve tornare un oggetto contenente una proprietà "sum":
@@ -151,33 +141,35 @@ whatDayIsIt();
   }
 */
 function rollTheDices(n) {
-  const tot = {
+  const oggetto = {
     sum: 0,
+    values: [],
   };
+  const numRandom = Math.ceil(Math.random() * 7);
   for (let i = 0; i < n; i++) {
-    const numeroDice = dice();
-    const somma = tot.map((num) => sum.push(num + dice()));
+    let numero = numRandom;
+    oggetto.values.push(numero);
+    oggetto.sum += numero;
   }
-  console.log(tot);
+  return oggetto;
 }
-rollTheDices(10);
+console.log(rollTheDices(2));
 /* ESERCIZIO 9
   Scrivi una funzione chiamata "howManyDays" che riceve una data come parametro e ritorna il numero di giorni trascorsi da tale data.
 */
-function howManyDays(data) {
-  const dataAttuale = new Date();
-  risultato = DateDiff("d", data, dataAttuale);
-  return risultato;
+function howManyDays(date) {
+  const oggi = new Date();
+  const dataFornita = new Date(date);
+  const differenzaMill = oggi - dataFornita;
+  const differenza = Math.floor(differenzaMill / (1000 * 60 * 60 * 24));
+  return differenza;
 }
-howManyDays("1/8/2001");
+
+console.log(howManyDays("2020-02-20"));
 /* ESERCIZIO 10 
   Scrivi una funzione chiamata "isTodayMyBirthday" che deve ritornare true se oggi è il tuo compleanno, falso negli altri casi.
 */
-function isTodayMyBirthday() {
-  const compleanno = getDate(11) + getMonth(7);
-  const data = new Date();
-  return compleanno === data;
-}
+
 // Arrays & Oggetti
 
 // NOTA: l'array "movies" usato in alcuni esercizi è definito alla fine di questo file
