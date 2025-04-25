@@ -333,20 +333,47 @@ console.log(onlyTheYears());
 /* ESERCIZIO 15
   Scrivi una funzione chiamata "onlyInLastMillennium" che ritorna solamente i film prodotto nel millennio scorso contenuti nell'array "movies" fornito.
 */
-
+function onlyInLastMillennium() {
+  const films = movies.filter((film) => film.Year < "2001");
+  console.log(films);
+}
+onlyInLastMillennium();
 /* ESERCIZIO 16
   Scrivi una funzione chiamata "sumAllTheYears" che ritorna la somma di tutti gli anni in cui sono stati prodotti i film contenuti nell'array "movies" fornito.
 */
-
+function sumAllTheYears() {
+  const risultato = movies.reduce((somma, film) => somma + parseInt(film.Year), 0);
+  return risultato;
+}
+console.log(sumAllTheYears());
 /* ESERCIZIO 17
   Scrivi una funzione chiamata "searchByTitle" che riceve una stringa come parametro e ritorna i film nell'array "movies" fornito che la contengono nel titolo.
 */
-
+function searchByTitle(imdbID) {
+  const films = movies.find((film) => film.imdbID === imdbID);
+  return films;
+}
+console.log(searchByTitle("tt2395427"));
 /* ESERCIZIO 18
   Scrivi una funzione chiamata "searchAndDivide" che riceve una stringa come parametro e ritorna un oggetto contenente due array: "match" e "unmatch".
   "match" deve includere tutti i film dell'array "movies" fornito che contengono la stringa fornita all'interno del proprio titolo, mentre "unmatch" deve includere tutti i rimanenti.
 */
-
+function searchAndDivide(str) {
+  const oggetto = {
+    match: [],
+    unmatch: [],
+  };
+  for (let i = 0; i < movies.length; i++) {
+    const movie = movies[i];
+    if (movie.Title.includes(str)) {
+      oggetto.match.push(movie);
+    } else {
+      oggetto.unmatch.push(movie);
+    }
+  }
+  return oggetto;
+}
+console.log(searchAndDivide("War"));
 /* ESERCIZIO 19
   Scrivi una funzione chiamata "removeIndex" che riceve un numero come parametro e ritorna l'array "movies" fornito privo dell'elemento nella posizione ricevuta come parametro.
 */
@@ -394,7 +421,14 @@ console.log(onlyTheYears());
   ***
 
 */
-
+function halfTree(numero) {
+  if (numero > 0) {
+    for (let i = 0; i < numero; i++) {
+      console.log("*".repeat(i));
+    }
+  }
+}
+halfTree(15);
 /* ESERCIZIO 28
   Crea una funzione chiamata "tree" che riceve un numero come parametro e costruisce un albero di "*" (asterischi) dell'altezza fornita.
 
@@ -406,9 +440,22 @@ console.log(onlyTheYears());
   *****
 
 */
-
+function halfTree(numero) {
+  if (numero > 0) {
+    for (let i = 0; i < numero; i++) {
+      const spazi = " ".repeat(numero - i);
+      const aster = "*".repeat(2 * i);
+      console.log(spazi + aster);
+    }
+  }
+}
+halfTree(10);
 /* ESERCIZIO 29
   Crea una funzione chiamata "isItPrime" che riceve un numero come parametro e ritorna true se il numero fornito è un numero primo.
 */
 
 /* Questo array viene usato per gli esercizi. Non modificarlo. */
+function isItPrime(numero) {
+  return numero % 2 !== 0;
+}
+console.log(isItPrime(7));
